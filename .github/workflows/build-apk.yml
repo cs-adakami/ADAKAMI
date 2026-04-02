@@ -53,15 +53,22 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleDebug
 
+      - name: Rename APK file
+        run: |
+          mv android/app/build/outputs/apk/debug/app-debug.apk "android/app/build/outputs/apk/debug/Adakami v1.0.${{ github.run_number }} release.apk"
+
       - name: Upload APK to Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Adakami
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: "android/app/build/outputs/apk/debug/Adakami v1.0.${{ github.run_number }} release.apk"
 
       - name: Rilis APK ke Halaman Depan GitHub
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "Build-${{ github.run_number }}"
-          name: "Aplikasi Adakami (Pembaruan ${{ github.run_number }})"
-          files: android/app/build/outputs/apk/debug/Adakami-release.apk
+          tag_name: "v1.0.${{ github.run_number }}"
+          name: "Aplikasi Adakami (Build ${{ github.run_number }})"
+          body: "Pembaruan otomatis dari GitHub Actions."
+          files: "android/app/build/outputs/apk/debug/Adakami v1.0.${{ github.run_number }} release.apk"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
