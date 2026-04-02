@@ -8,6 +8,9 @@ on:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -40,6 +43,8 @@ jobs:
       - name: Sync Capacitor Android
         run: |
           npx cap add android || true
+          npm install @capacitor/assets --save-dev
+          npx capacitor-assets generate --android
           npx cap sync android
 
       - name: Build APK with Gradle
@@ -48,8 +53,15 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleDebug
 
-      - name: Upload APK
+      - name: Upload APK to Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: aplikasi-android-debug
+          name: Adakami
           path: android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Rilis APK ke Halaman Depan GitHub
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "Build-${{ github.run_number }}"
+          name: "Aplikasi Adakami (Pembaruan ${{ github.run_number }})"
+          files: android/app/build/outputs/apk/debug/Adakami-release.apk
