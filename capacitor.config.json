@@ -1,1 +1,7 @@
+{
+  "appId": "com.adakamiid.cek",
+  "appName": "Adakami",
+  "webDir": ".",
+  "bundledWebRuntime": false
+}
 
