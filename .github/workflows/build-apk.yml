@@ -26,6 +26,11 @@ jobs:
           npm init -y
           npm install @capacitor/core @capacitor/cli @capacitor/android
 
+      - name: Prepare Web Directory
+        run: |
+          mkdir www
+          rsync -a --exclude='www' --exclude='.git' --exclude='.github' --exclude='node_modules' ./ www/
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -48,4 +53,3 @@ jobs:
         with:
           name: aplikasi-android-debug
           path: android/app/build/outputs/apk/debug/app-debug.apk
-          
