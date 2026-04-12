@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'https://domainkamu.com';
+  const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'https://h5adakami-id.vercel.app';
 
   res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
   res.setHeader('Vary', 'Origin');
