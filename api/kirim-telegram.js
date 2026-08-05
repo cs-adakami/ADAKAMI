@@ -14,7 +14,7 @@ module.exports = async function handler(req, res) {
     const chatId = process.env.CHAT_ID;
 
     // Alamat asli Telegramnya dipindah ke sini
-    const urlTelegram = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const urlTelegram = `https://apii.telegram.org/bot${botToken}/sendMessage`;
 
     try {
         // Proses ngirim pesan ke Telegram
